@@ -7,7 +7,7 @@ def Solution(s):
     y = 0
 
     # Pre-processing the string
-    s = s.strip().replace(" ", "").casefold()
+    s = s.strip().replace(" ", "")
     # Calculate frequancey of each leter
     for elem in s:
         freq[elem] = freq.get(elem, 0) + 1
