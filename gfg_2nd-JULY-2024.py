@@ -3,20 +3,22 @@
 
 def subArraySum(arr, n, s):
     """Returns the left and right 1-based index of a subarray adding up to s"""
-    # Not commplete. Some casses return the wrong output
-    end =  start = count = 0
+    if s == 0 and 0 not in arr:
+        return [-1]
+    if s in arr:
+        return [arr.index(s) + 1, arr.index(s) + 1]
 
-    while True:
-        if count < s and end < n:
-            count += arr[end]
-            end += 1
-        elif count == s:
-            return [start + 1, end]
-        elif count > s or end == n:
+    start = 0
+    count = 0
+    for end in range(n):
+        count += arr[end]
+
+        while count > s and start <= end:
             count -= arr[start]
             start += 1
-        if start == n:
-            break
+
+        if count == s:
+            return [start + 1, end + 1]
 
     return [-1]
 
